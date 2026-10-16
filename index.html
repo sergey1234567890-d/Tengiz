@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://ultra-trading.netlify.app/ -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=a7f13eb9-98f9-4015-821e-5af0aaecbd72
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>mega trader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./ULTRA TRADING — Распределение баланса_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --bg: #09090d;
+    --surface: #121218;
+    --surface-2: #17171f;
+    --border: #232330;
+    --border-soft: #1b1b24;
+    --text: #f5f5f7;
+    --text-secondary: #9a99a8;
+    --text-muted: #5e5d6b;
+    --accent: #d4a62a;
+    --accent-2: #f4cf5c;
+    --accent-bg: #2a2210;
+    --green: #34d399;
+    --orange: #f59e0b;
+    --red: #f87171;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #bgfx {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.1;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 36px 20px 90px;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    color: #0b0710;
+    box-shadow: 0 0 22px 2px rgba(212,166,42,0.45);
+  }
+  .logo-text {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .visitor-counter {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 3px 9px;
+    border-radius: 100px;
+    margin-left: 4px;
+  }
+  .badge-live {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green);
+    background: rgba(52,211,153,0.12);
+    border: 1px solid rgba(52,211,153,0.25);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0 0 28px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 24px;
+  }
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .tab.active {
+    background: var(--accent);
+    color: #0b0710;
+  }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid rgba(212,166,42,0.18);
+    box-shadow: 0 0 0 1px rgba(212,166,42,0.05), 0 10px 28px rgba(0,0,0,0.35);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 16px;
+    animation: cardIn 0.35s cubic-bezier(.2,.8,.2,1) both;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .field { margin-bottom: 4px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .field input {
+    width: 100%;
+    font-size: 19px;
+    font-weight: 700;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+    font-family: inherit;
+  }
+  .field input::placeholder { color: var(--text-muted); font-weight: 500; }
+  .field input:focus { border-color: var(--accent); }
+
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .steps-list { margin-top: 18px; }
+  .step-row {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+  }
+  .step-circle {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    color: var(--accent-2);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-mid { min-width: 0; }
+  .step-pct-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .step-bar-track {
+    height: 6px;
+    background: var(--surface-2);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .step-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width 0.4s cubic-bezier(.2,.8,.2,1);
+  }
+  .step-circle.tier-green { background: rgba(52,211,153,0.14); color: var(--green); }
+  .step-circle.tier-orange { background: rgba(245,158,11,0.14); color: var(--orange); }
+  .step-circle.tier-purple { background: var(--accent-bg); color: var(--accent-2); }
+  .step-bar-fill.tier-green { background: linear-gradient(90deg, #1fa776, var(--green)); }
+  .step-bar-fill.tier-orange { background: linear-gradient(90deg, #c2760a, var(--orange)); }
+  .step-bar-fill.tier-purple { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  .step-amount.tier-green { color: var(--green); }
+  .step-amount.tier-orange { color: var(--orange); }
+  .step-amount.tier-purple { color: var(--accent-2); }
+
+  .result-card {
+    background: linear-gradient(145deg, var(--accent-bg), var(--surface));
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+    margin-top: 4px;
+    text-align: center;
+    animation: cardIn 0.35s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .result-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .result-value {
+    font-size: 40px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-2), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+  .result-sub { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+
+  .goal-progress {
+    display: none;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    align-items: center;
+    gap: 16px;
+    animation: cardIn 0.35s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .progress-ring { flex-shrink: 0; }
+  .goal-progress-text { text-align: left; }
+  .goal-progress-value { font-size: 18px; font-weight: 700; color: var(--green); }
+  .goal-progress-label { font-size: 11px; color: var(--text-muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .toggle-days {
+    margin-top: 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 14px;
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .toggle-days:hover { border-color: var(--accent); color: var(--accent-2); }
+
+  .days-table { display: none; margin-top: 14px; max-height: 320px; overflow-y: auto; }
+  .days-table.open { display: block; }
+  .day-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 4px;
+    border-bottom: 1px solid rgba(212,166,42,0.14);
+    font-size: 13px;
+  }
+  .day-row:last-child { border-bottom: none; }
+  .day-row.done { opacity: 0.45; }
+  .day-row.done .day-amount { text-decoration: line-through; }
+  .day-amount { font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .day-checkbox {
+    appearance: none;
+    width: 20px; height: 20px;
+    border-radius: 7px;
+    border: 1.5px solid rgba(212,166,42,0.4);
+    background: var(--surface-2);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .day-checkbox:checked { background: var(--green); border-color: var(--green); }
+  .day-checkbox:checked::after {
+    content: "";
+    position: absolute; left: 6px; top: 2px;
+    width: 5px; height: 10px;
+    border: solid #0b0710;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .note { font-size: 12px; color: var(--text-muted); margin-top: 14px; line-height: 1.6; }
+
+  .confetti-piece {
+    position: fixed;
+    pointer-events: none; z-index: 999;
+    border-radius: 2px;
+  }
+
+  .gate-status-label { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+
+  .partners-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: -16px 0 20px;
+  }
+
+  #globalFlash {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; z-index: 9999;
+  }
+  @keyframes borderBlink {
+    0%, 100% { box-shadow: inset 0 0 0 0 rgba(248,113,113,0); }
+    25%, 75% { box-shadow: inset 0 0 60px 10px rgba(248,113,113,0.55); }
+    50% { box-shadow: inset 0 0 0 0 rgba(248,113,113,0); }
+  }
+  #globalFlash.flash-active { animation: borderBlink 0.9s ease-in-out 2; }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212,166,42,0.55); }
+    50% { box-shadow: 0 0 0 12px rgba(212,166,42,0); }
+  }
+  .po-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #0b0710;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-top: 16px;
+    animation: pulseGlow 1.6s infinite;
+  }
+  .po-link-quiet {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: underline;
+  }
+  .po-link-quiet:hover { color: var(--accent-2); }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent-2);
+    margin-bottom: 10px;
+  }
+  .eyebrow-dot {
+    width: 7px; height: 7px; border-radius: 2px;
+    background: var(--accent); transform: rotate(45deg); flex-shrink: 0;
+  }
+  .session-heading { font-size: 15px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+
+  .session-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-top: 22px;
+  }
+  .session-box {
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .session-box.tone-purple {
+    background: rgba(212,166,42,0.07);
+    border: 1px solid rgba(212,166,42,0.3);
+  }
+  .session-box.tone-green {
+    background: rgba(52,211,153,0.07);
+    border: 1px solid rgba(52,211,153,0.25);
+  }
+  .session-box-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .session-box-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .session-box-time { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .session-box-status {
+    font-size: 11px; color: var(--text-muted); margin-top: 10px; font-weight: 500;
+  }
+  .session-box-status.done { color: var(--green); font-weight: 700; }
+  .session-box-status.active { color: var(--green); font-weight: 700; }
+
+  .race-bar-track {
+    position: relative; width: 100%; height: 8px;
+    background: var(--surface); border-radius: 100px;
+  }
+  .race-bar-fill {
+    position: absolute; left: 0; top: 0; height: 100%;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transition: width 0.6s linear;
+    width: 0%;
+  }
+  .race-runner {
+    position: absolute; top: -15px; left: 0%;
+    transform: translateX(-50%) scaleX(-1);
+    font-size: 18px;
+    transition: left 0.6s linear;
+  }
+
+  .coin-wrap {
+    perspective: 700px;
+    display: flex; justify-content: center;
+  }
+  .coin {
+    width: 88px; height: 88px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s cubic-bezier(.2,.7,.3,1);
+  }
+  .coin-face {
+    position: absolute; width: 100%; height: 100%;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; font-weight: 800;
+    backface-visibility: hidden;
+    background: linear-gradient(145deg, var(--accent-2), var(--accent));
+    border: 3px solid #8a6a10;
+    color: #2a2210;
+  }
+  .coin-back { transform: rotateY(180deg); }
+
+  .promo-code {
+    display: inline-block;
+    background: var(--accent-bg);
+    color: var(--accent-2);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+
+
+<script> 
+alert("hi tengiz");
+</script>
+<div class="wrap" id="mainContent" style="">
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-mark">U</div>
+      <div class="logo-text">ULTRA TRADING</div>
+      <span class="visitor-counter" id="visitorCounter" style="">👥 277</span>
+    </div>
+    <div class="badge-live">● ULTRA VIP</div>
+  </div>
+
+  <h1>Управление балансом</h1>
+  <p class="subtitle">Распределение по ступеням и расчёт плана роста</p>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="steps">Ступени</div>
+    <div class="tab" data-tab="planner">Планировщик</div>
+    <div class="tab" data-tab="tracker">Трекер</div>
+  </div>
+
+  <div class="panel active" id="panel-steps">
+    <div class="card">
+      <div class="field">
+        <label for="balance">Ваш баланс, $</label>
+        <input type="number" id="balance" placeholder="1000" inputmode="decimal">
+      </div>
+      <div class="steps-list" id="stepsList"><div class="step-row">
+      <div class="step-circle tier-green">1</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень 1</span><span>1%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill tier-green" style="width:1.7%"></div></div>
+      </div>
+      <div class="step-amount tier-green" id="step-amt-0">$2,22</div>
+    </div><div class="step-row">
+      <div class="step-circle tier-green">2</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень 2</span><span>1.5%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill tier-green" style="width:2.5%"></div></div>
+      </div>
+      <div class="step-amount tier-green" id="step-amt-1">$3,33</div>
+    </div><div class="step-row">
+      <div class="step-circle tier-orange">3</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень 3</span><span>3.5%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill tier-orange" style="width:5.8%"></div></div>
+      </div>
+      <div class="step-amount tier-orange" id="step-amt-2">$7,77</div>
+    </div><div class="step-row">
+      <div class="step-circle tier-orange">4</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень 4</span><span>8%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill tier-orange" style="width:13.3%"></div></div>
+      </div>
+      <div class="step-amount tier-orange" id="step-amt-3">$17,76</div>
+    </div><div class="step-row">
+      <div class="step-circle tier-purple">5</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень 5</span><span>20%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill tier-purple" style="width:33.3%"></div></div>
+      </div>
+      <div class="step-amount tier-purple" id="step-amt-4">$44,40</div>
+    </div><div class="step-row">
+      <div class="step-circle tier-purple">6</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень 6</span><span>60%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill tier-purple" style="width:100.0%"></div></div>
+      </div>
+      <div class="step-amount tier-purple" id="step-amt-5">$133,20</div>
+    </div></div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-planner">
+    <div class="card">
+      <div class="field" style="margin-bottom:14px;">
+        <label for="startBalance">Стартовый баланс, $</label>
+        <input type="number" id="startBalance" placeholder="1000" inputmode="decimal">
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="targetBalance">Цель, $</label>
+          <input type="number" id="targetBalance" placeholder="5000" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="daysCount">Дней</label>
+          <input type="number" id="daysCount" placeholder="30" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card" id="resultCard" style="display: block;">
+      <div class="result-label">Нужный рост в день</div>
+      <div class="result-value" id="dailyPct">2.59%</div>
+      <div class="result-sub" id="resultSub">80,00 $ -&gt; 800,00 $ за 90 дней</div>
+    </div>
+
+    <div class="goal-progress" id="goalProgress" style="display: flex;">
+      <svg class="progress-ring" width="52" height="52" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="22" fill="none" stroke="var(--surface)" stroke-width="5"></circle>
+        <circle id="progressRingFill" cx="26" cy="26" r="22" fill="none" stroke="var(--green)" stroke-width="5" stroke-linecap="round" stroke-dasharray="138.2" stroke-dashoffset="138.2" transform="rotate(-90 26 26)" style="transition: stroke-dashoffset 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); stroke-dashoffset: 76.7778;"></circle>
+      </svg>
+      <div class="goal-progress-text">
+        <div class="goal-progress-value" id="goalProgressValue">50 дней</div>
+        <div class="goal-progress-label">осталось до цели</div>
+      </div>
+    </div>
+
+    <div class="card days-table open" id="daysTable">
+      <div id="daysBody"><div class="day-row done">
+      <span>День 1</span>
+      <span class="day-amount">$82,07</span>
+      <input type="checkbox" class="day-checkbox" data-day="1" checked="">
+    </div><div class="day-row done">
+      <span>День 2</span>
+      <span class="day-amount">$84,20</span>
+      <input type="checkbox" class="day-checkbox" data-day="2" checked="">
+    </div><div class="day-row done">
+      <span>День 3</span>
+      <span class="day-amount">$86,38</span>
+      <input type="checkbox" class="day-checkbox" data-day="3" checked="">
+    </div><div class="day-row done">
+      <span>День 4</span>
+      <span class="day-amount">$88,62</span>
+      <input type="checkbox" class="day-checkbox" data-day="4" checked="">
+    </div><div class="day-row done">
+      <span>День 5</span>
+      <span class="day-amount">$90,92</span>
+      <input type="checkbox" class="day-checkbox" data-day="5" checked="">
+    </div><div class="day-row done">
+      <span>День 6</span>
+      <span class="day-amount">$93,27</span>
+      <input type="checkbox" class="day-checkbox" data-day="6" checked="">
+    </div><div class="day-row done">
+      <span>День 7</span>
+      <span class="day-amount">$95,69</span>
+      <input type="checkbox" class="day-checkbox" data-day="7" checked="">
+    </div><div class="day-row done">
+      <span>День 8</span>
+      <span class="day-amount">$98,17</span>
+      <input type="checkbox" class="day-checkbox" data-day="8" checked="">
+    </div><div class="day-row done">
+      <span>День 9</span>
+      <span class="day-amount">$100,71</span>
+      <input type="checkbox" class="day-checkbox" data-day="9" checked="">
+    </div><div class="day-row done">
+      <span>День 10</span>
+      <span class="day-amount">$103,32</span>
+      <input type="checkbox" class="day-checkbox" data-day="10" checked="">
+    </div><div class="day-row done">
+      <span>День 11</span>
+      <span class="day-amount">$106,00</span>
+      <input type="checkbox" class="day-checkbox" data-day="11" checked="">
+    </div><div class="day-row done">
+      <span>День 12</span>
+      <span class="day-amount">$108,75</span>
+      <input type="checkbox" class="day-checkbox" data-day="12" checked="">
+    </div><div class="day-row done">
+      <span>День 13</span>
+      <span class="day-amount">$111,57</span>
+      <input type="checkbox" class="day-checkbox" data-day="13" checked="">
+    </div><div class="day-row done">
+      <span>День 14</span>
+      <span class="day-amount">$114,46</span>
+      <input type="checkbox" class="day-checkbox" data-day="14" checked="">
+    </div><div class="day-row done">
+      <span>День 15</span>
+      <span class="day-amount">$117,42</span>
+      <input type="checkbox" class="day-checkbox" data-day="15" checked="">
+    </div><div class="day-row done">
+      <span>День 16</span>
+      <span class="day-amount">$120,47</span>
+      <input type="checkbox" class="day-checkbox" data-day="16" checked="">
+    </div><div class="day-row done">
+      <span>День 17</span>
+      <span class="day-amount">$123,59</span>
+      <input type="checkbox" class="day-checkbox" data-day="17" checked="">
+    </div><div class="day-row done">
+      <span>День 18</span>
+      <span class="day-amount">$126,79</span>
+      <input type="checkbox" class="day-checkbox" data-day="18" checked="">
+    </div><div class="day-row done">
+      <span>День 19</span>
+      <span class="day-amount">$130,08</span>
+      <input type="checkbox" class="day-checkbox" data-day="19" checked="">
+    </div><div class="day-row done">
+      <span>День 20</span>
+      <span class="day-amount">$133,45</span>
+      <input type="checkbox" class="day-checkbox" data-day="20" checked="">
+    </div><div class="day-row done">
+      <span>День 21</span>
+      <span class="day-amount">$136,91</span>
+      <input type="checkbox" class="day-checkbox" data-day="21" checked="">
+    </div><div class="day-row done">
+      <span>День 22</span>
+      <span class="day-amount">$140,45</span>
+      <input type="checkbox" class="day-checkbox" data-day="22" checked="">
+    </div><div class="day-row done">
+      <span>День 23</span>
+      <span class="day-amount">$144,09</span>
+      <input type="checkbox" class="day-checkbox" data-day="23" checked="">
+    </div><div class="day-row done">
+      <span>День 24</span>
+      <span class="day-amount">$147,83</span>
+      <input type="checkbox" class="day-checkbox" data-day="24" checked="">
+    </div><div class="day-row done">
+      <span>День 25</span>
+      <span class="day-amount">$151,66</span>
+      <input type="checkbox" class="day-checkbox" data-day="25" checked="">
+    </div><div class="day-row done">
+      <span>День 26</span>
+      <span class="day-amount">$155,59</span>
+      <input type="checkbox" class="day-checkbox" data-day="26" checked="">
+    </div><div class="day-row done">
+      <span>День 27</span>
+      <span class="day-amount">$159,62</span>
+      <input type="checkbox" class="day-checkbox" data-day="27" checked="">
+    </div><div class="day-row done">
+      <span>День 28</span>
+      <span class="day-amount">$163,76</span>
+      <input type="checkbox" class="day-checkbox" data-day="28" checked="">
+    </div><div class="day-row done">
+      <span>День 29</span>
+      <span class="day-amount">$168,00</span>
+      <input type="checkbox" class="day-checkbox" data-day="29" checked="">
+    </div><div class="day-row done">
+      <span>День 30</span>
+      <span class="day-amount">$172,35</span>
+      <input type="checkbox" class="day-checkbox" data-day="30" checked="">
+    </div><div class="day-row done">
+      <span>День 31</span>
+      <span class="day-amount">$176,82</span>
+      <input type="checkbox" class="day-checkbox" data-day="31" checked="">
+    </div><div class="day-row done">
+      <span>День 32</span>
+      <span class="day-amount">$181,40</span>
+      <input type="checkbox" class="day-checkbox" data-day="32" checked="">
+    </div><div class="day-row done">
+      <span>День 33</span>
+      <span class="day-amount">$186,10</span>
+      <input type="checkbox" class="day-checkbox" data-day="33" checked="">
+    </div><div class="day-row done">
+      <span>День 34</span>
+      <span class="day-amount">$190,93</span>
+      <input type="checkbox" class="day-checkbox" data-day="34" checked="">
+    </div><div class="day-row done">
+      <span>День 35</span>
+      <span class="day-amount">$195,87</span>
+      <input type="checkbox" class="day-checkbox" data-day="35" checked="">
+    </div><div class="day-row done">
+      <span>День 36</span>
+      <span class="day-amount">$200,95</span>
+      <input type="checkbox" class="day-checkbox" data-day="36" checked="">
+    </div><div class="day-row done">
+      <span>День 37</span>
+      <span class="day-amount">$206,16</span>
+      <input type="checkbox" class="day-checkbox" data-day="37" checked="">
+    </div><div class="day-row done">
+      <span>День 38</span>
+      <span class="day-amount">$211,50</span>
+      <input type="checkbox" class="day-checkbox" data-day="38" checked="">
+    </div><div class="day-row done">
+      <span>День 39</span>
+      <span class="day-amount">$216,98</span>
+      <input type="checkbox" class="day-checkbox" data-day="39" checked="">
+    </div><div class="day-row done">
+      <span>День 40</span>
+      <span class="day-amount">$222,60</span>
+      <input type="checkbox" class="day-checkbox" data-day="40" checked="">
+    </div><div class="day-row">
+      <span>День 41</span>
+      <span class="day-amount">$228,37</span>
+      <input type="checkbox" class="day-checkbox" data-day="41">
+    </div><div class="day-row">
+      <span>День 42</span>
+      <span class="day-amount">$234,29</span>
+      <input type="checkbox" class="day-checkbox" data-day="42">
+    </div><div class="day-row">
+      <span>День 43</span>
+      <span class="day-amount">$240,36</span>
+      <input type="checkbox" class="day-checkbox" data-day="43">
+    </div><div class="day-row">
+      <span>День 44</span>
+      <span class="day-amount">$246,59</span>
+      <input type="checkbox" class="day-checkbox" data-day="44">
+    </div><div class="day-row">
+      <span>День 45</span>
+      <span class="day-amount">$252,98</span>
+      <input type="checkbox" class="day-checkbox" data-day="45">
+    </div><div class="day-row">
+      <span>День 46</span>
+      <span class="day-amount">$259,54</span>
+      <input type="checkbox" class="day-checkbox" data-day="46">
+    </div><div class="day-row">
+      <span>День 47</span>
+      <span class="day-amount">$266,26</span>
+      <input type="checkbox" class="day-checkbox" data-day="47">
+    </div><div class="day-row">
+      <span>День 48</span>
+      <span class="day-amount">$273,16</span>
+      <input type="checkbox" class="day-checkbox" data-day="48">
+    </div><div class="day-row">
+      <span>День 49</span>
+      <span class="day-amount">$280,24</span>
+      <input type="checkbox" class="day-checkbox" data-day="49">
+    </div><div class="day-row">
+      <span>День 50</span>
+      <span class="day-amount">$287,51</span>
+      <input type="checkbox" class="day-checkbox" data-day="50">
+    </div><div class="day-row">
+      <span>День 51</span>
+      <span class="day-amount">$294,96</span>
+      <input type="checkbox" class="day-checkbox" data-day="51">
+    </div><div class="day-row">
+      <span>День 52</span>
+      <span class="day-amount">$302,60</span>
+      <input type="checkbox" class="day-checkbox" data-day="52">
+    </div><div class="day-row">
+      <span>День 53</span>
+      <span class="day-amount">$310,44</span>
+      <input type="checkbox" class="day-checkbox" data-day="53">
+    </div><div class="day-row">
+      <span>День 54</span>
+      <span class="day-amount">$318,49</span>
+      <input type="checkbox" class="day-checkbox" data-day="54">
+    </div><div class="day-row">
+      <span>День 55</span>
+      <span class="day-amount">$326,74</span>
+      <input type="checkbox" class="day-checkbox" data-day="55">
+    </div><div class="day-row">
+      <span>День 56</span>
+      <span class="day-amount">$335,21</span>
+      <input type="checkbox" class="day-checkbox" data-day="56">
+    </div><div class="day-row">
+      <span>День 57</span>
+      <span class="day-amount">$343,89</span>
+      <input type="checkbox" class="day-checkbox" data-day="57">
+    </div><div class="day-row">
+      <span>День 58</span>
+      <span class="day-amount">$352,80</span>
+      <input type="checkbox" class="day-checkbox" data-day="58">
+    </div><div class="day-row">
+      <span>День 59</span>
+      <span class="day-amount">$361,95</span>
+      <input type="checkbox" class="day-checkbox" data-day="59">
+    </div><div class="day-row">
+      <span>День 60</span>
+      <span class="day-amount">$371,33</span>
+      <input type="checkbox" class="day-checkbox" data-day="60">
+    </div><div class="day-row">
+      <span>День 61</span>
+      <span class="day-amount">$380,95</span>
+      <input type="checkbox" class="day-checkbox" data-day="61">
+    </div><div class="day-row">
+      <span>День 62</span>
+      <span class="day-amount">$390,82</span>
+      <input type="checkbox" class="day-checkbox" data-day="62">
+    </div><div class="day-row">
+      <span>День 63</span>
+      <span class="day-amount">$400,95</span>
+      <input type="checkbox" class="day-checkbox" data-day="63">
+    </div><div class="day-row">
+      <span>День 64</span>
+      <span class="day-amount">$411,34</span>
+      <input type="checkbox" class="day-checkbox" data-day="64">
+    </div><div class="day-row">
+      <span>День 65</span>
+      <span class="day-amount">$422,00</span>
+      <input type="checkbox" class="day-checkbox" data-day="65">
+    </div><div class="day-row">
+      <span>День 66</span>
+      <span class="day-amount">$432,94</span>
+      <input type="checkbox" class="day-checkbox" data-day="66">
+    </div><div class="day-row">
+      <span>День 67</span>
+      <span class="day-amount">$444,15</span>
+      <input type="checkbox" class="day-checkbox" data-day="67">
+    </div><div class="day-row">
+      <span>День 68</span>
+      <span class="day-amount">$455,66</span>
+      <input type="checkbox" class="day-checkbox" data-day="68">
+    </div><div class="day-row">
+      <span>День 69</span>
+      <span class="day-amount">$467,47</span>
+      <input type="checkbox" class="day-checkbox" data-day="69">
+    </div><div class="day-row">
+      <span>День 70</span>
+      <span class="day-amount">$479,59</span>
+      <input type="checkbox" class="day-checkbox" data-day="70">
+    </div><div class="day-row">
+      <span>День 71</span>
+      <span class="day-amount">$492,02</span>
+      <input type="checkbox" class="day-checkbox" data-day="71">
+    </div><div class="day-row">
+      <span>День 72</span>
+      <span class="day-amount">$504,77</span>
+      <input type="checkbox" class="day-checkbox" data-day="72">
+    </div><div class="day-row">
+      <span>День 73</span>
+      <span class="day-amount">$517,85</span>
+      <input type="checkbox" class="day-checkbox" data-day="73">
+    </div><div class="day-row">
+      <span>День 74</span>
+      <span class="day-amount">$531,27</span>
+      <input type="checkbox" class="day-checkbox" data-day="74">
+    </div><div class="day-row">
+      <span>День 75</span>
+      <span class="day-amount">$545,03</span>
+      <input type="checkbox" class="day-checkbox" data-day="75">
+    </div><div class="day-row">
+      <span>День 76</span>
+      <span class="day-amount">$559,16</span>
+      <input type="checkbox" class="day-checkbox" data-day="76">
+    </div><div class="day-row">
+      <span>День 77</span>
+      <span class="day-amount">$573,65</span>
+      <input type="checkbox" class="day-checkbox" data-day="77">
+    </div><div class="day-row">
+      <span>День 78</span>
+      <span class="day-amount">$588,51</span>
+      <input type="checkbox" class="day-checkbox" data-day="78">
+    </div><div class="day-row">
+      <span>День 79</span>
+      <span class="day-amount">$603,76</span>
+      <input type="checkbox" class="day-checkbox" data-day="79">
+    </div><div class="day-row">
+      <span>День 80</span>
+      <span class="day-amount">$619,41</span>
+      <input type="checkbox" class="day-checkbox" data-day="80">
+    </div><div class="day-row">
+      <span>День 81</span>
+      <span class="day-amount">$635,46</span>
+      <input type="checkbox" class="day-checkbox" data-day="81">
+    </div><div class="day-row">
+      <span>День 82</span>
+      <span class="day-amount">$651,93</span>
+      <input type="checkbox" class="day-checkbox" data-day="82">
+    </div><div class="day-row">
+      <span>День 83</span>
+      <span class="day-amount">$668,82</span>
+      <input type="checkbox" class="day-checkbox" data-day="83">
+    </div><div class="day-row">
+      <span>День 84</span>
+      <span class="day-amount">$686,16</span>
+      <input type="checkbox" class="day-checkbox" data-day="84">
+    </div><div class="day-row">
+      <span>День 85</span>
+      <span class="day-amount">$703,94</span>
+      <input type="checkbox" class="day-checkbox" data-day="85">
+    </div><div class="day-row">
+      <span>День 86</span>
+      <span class="day-amount">$722,18</span>
+      <input type="checkbox" class="day-checkbox" data-day="86">
+    </div><div class="day-row">
+      <span>День 87</span>
+      <span class="day-amount">$740,89</span>
+      <input type="checkbox" class="day-checkbox" data-day="87">
+    </div><div class="day-row">
+      <span>День 88</span>
+      <span class="day-amount">$760,09</span>
+      <input type="checkbox" class="day-checkbox" data-day="88">
+    </div><div class="day-row">
+      <span>День 89</span>
+      <span class="day-amount">$779,79</span>
+      <input type="checkbox" class="day-checkbox" data-day="89">
+    </div><div class="day-row">
+      <span>День 90</span>
+      <span class="day-amount">$800,00</span>
+      <input type="checkbox" class="day-checkbox" data-day="90">
+    </div></div>
+    </div>
+
+    <p class="note">Расчёт показывает, какой стабильный дневной процент роста нужен сложным процентом, чтобы дойти от стартового баланса до цели. Это математический ориентир, а не гарантия результата.</p>
+  </div>
+
+  <div class="panel" id="panel-tracker">
+    <div class="card" id="sessionCard" style="text-align:left;">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>ТОРГОВЫЙ ДЕНЬ</div>
+      <div class="session-heading" id="sessionLabel">Следующая сессия</div>
+      <div class="result-value" id="sessionCountdown" style="font-size:40px;text-align:left;background:none;-webkit-text-fill-color:var(--text);">16:02:41</div>
+      <div class="result-sub" id="sessionSub" style="text-align:left;">Старт в 14:00</div>
+
+      <div class="session-grid">
+        <div class="session-box tone-purple">
+          <div class="session-box-header">
+            <span class="session-box-title">Сессия 1</span>
+            <span class="session-box-time">14:00</span>
+          </div>
+          <div class="race-bar-track">
+            <div class="race-bar-fill" id="raceFill1" style="width: 100%;"></div>
+          </div>
+          <div class="session-box-status done" id="raceStatus1">Завершена ✓</div>
+        </div>
+
+        <div class="session-box tone-green">
+          <div class="session-box-header">
+            <span class="session-box-title">Сессия 2</span>
+            <span class="session-box-time">21:00</span>
+          </div>
+          <div class="race-bar-track">
+            <div class="race-bar-fill" id="raceFill2" style="width: 100%;"></div>
+          </div>
+          <div class="session-box-status done" id="raceStatus2">Завершена ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="trackerCard">
+      <div class="result-label" style="text-align:center;margin-bottom:14px;">Счётчик сделок</div>
+      <div class="row2" style="margin-bottom:14px;">
+        <div style="text-align:center;">
+          <div class="result-value" id="winsCount" style="font-size:34px;color:var(--green);-webkit-text-fill-color:var(--green);background:none;">0</div>
+          <div class="result-sub">плюсы</div>
+        </div>
+        <div style="text-align:center;">
+          <div class="result-value" id="lossesCount" style="font-size:34px;color:var(--red);-webkit-text-fill-color:var(--red);background:none;">0</div>
+          <div class="result-sub">минусы</div>
+        </div>
+      </div>
+      <div class="row2" style="margin-bottom:10px;">
+        <button class="toggle-days" id="winBtn" style="background:rgba(52,211,153,0.14);border-color:var(--green);color:var(--green);font-weight:700;">+ Плюс</button>
+        <button class="toggle-days" id="lossBtn" style="background:rgba(248,113,113,0.14);border-color:var(--red);color:var(--red);font-weight:700;">− Минус</button>
+      </div>
+      <div class="result-sub" id="winRateText" style="text-align:center;margin-bottom:10px;">Пока нет сделок</div>
+      <button class="toggle-days" id="resetTrackerBtn">Сбросить счётчик</button>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <div class="result-label" style="margin-bottom:18px;">Монетка · для развлечения</div>
+      <div class="coin-wrap">
+        <div class="coin" id="coin">
+          <div class="coin-face coin-front">★</div>
+          <div class="coin-face coin-back">⚡</div>
+        </div>
+      </div>
+      <div class="result-sub" id="coinResult" style="margin-top:18px;">Нажми, чтобы подбросить</div>
+      <button class="toggle-days" id="flipCoinBtn" style="margin-top:14px;">Подбросить монетку</button>
+    </div>
+
+    <a href="https://t.me/+QAJFixvLEeE0OGQ6" target="_blank" rel="noopener" class="po-button" style="background:linear-gradient(135deg,#2AABEE,#229ED9);">Наш Telegram</a>
+  </div>
+</div>
+
+<script src="./ULTRA TRADING — Распределение баланса_files/supabase.js.Без названия"></script>
+<script>
+const SUPABASE_URL = 'https://obuysmgwtqdffqlinrkh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_2W8Eh9YL1hWYga1uP79TNA_5v1-UmQq';
+let sb = null;
+try { sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY); } catch (e) {}
+
+function showEl(el) { el.style.display = ''; }
+function hideEl(el) { el.style.display = 'none'; }
+
+function showGateForm() {
+  document.getElementById('gateForm').style.display = '';
+  document.getElementById('gateStatus').style.display = 'none';
+}
+
+function showGateStatus(status) {
+  document.getElementById('gateForm').style.display = 'none';
+  const box = document.getElementById('gateStatus');
+  box.style.display = '';
+  const label = document.getElementById('gateStatusLabel');
+  const desc = document.getElementById('gateStatusDesc');
+  const poButton = document.getElementById('poButtonRejected');
+  if (status === 'pending') {
+    label.textContent = 'Заявка на рассмотрении';
+    label.style.color = 'var(--orange)';
+    desc.textContent = 'Обычно подтверждение занимает немного времени. Загляните позже или нажмите проверить статус.';
+    poButton.style.display = 'none';
+  } else {
+    label.textContent = 'Ваш ID не был подтверждён';
+    label.style.color = 'var(--red)';
+    desc.innerHTML = 'Создайте аккаунт и введите партнёрский промокод <span class="promo-code">ULTRA50</span>, чтобы получить доступ:';
+    poButton.style.display = 'block';
+  }
+}
+
+async function checkAccess() {
+  const loading = document.getElementById('loadingScreen');
+  const gate = document.getElementById('gateScreen');
+  const main = document.getElementById('mainContent');
+  hideEl(gate); hideEl(main); showEl(loading);
+
+  const savedId = localStorage.getItem('ultraUserId');
+  if (!savedId || !sb) {
+    hideEl(loading); showEl(gate); showGateForm();
+    return;
+  }
+
+  try {
+    const { data, error } = await sb
+      .from('access_requests')
+      .select('status')
+      .eq('user_id', savedId)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    hideEl(loading);
+    if (error || !data) { showEl(gate); showGateForm(); return; }
+
+    if (data.status === 'approved') {
+      showEl(main);
+    } else if (data.status === 'rejected') {
+      showEl(gate); showGateStatus('rejected');
+    } else {
+      showEl(gate); showGateStatus('pending');
+    }
+  } catch (e) {
+    hideEl(loading); showEl(gate); showGateForm();
+  }
+}
+
+document.getElementById('submitRequestBtn').addEventListener('click', async () => {
+  const input = document.getElementById('userIdInput');
+  const id = input.value.trim();
+  const err = document.getElementById('gateError');
+  if (!id) { err.textContent = 'Введите ваш ID'; err.style.display = 'block'; return; }
+  if (!sb) { err.textContent = 'Сервис недоступен, попробуйте позже'; err.style.display = 'block'; return; }
+  err.style.display = 'none';
+
+  try {
+    const { error } = await sb.from('access_requests').insert({ user_id: id });
+    if (error) { err.textContent = 'Не удалось отправить заявку, попробуйте ещё раз'; err.style.display = 'block'; return; }
+    localStorage.setItem('ultraUserId', id);
+    showGateStatus('pending');
+  } catch (e) {
+    err.textContent = 'Ошибка сети, попробуйте ещё раз'; err.style.display = 'block';
+  }
+});
+
+document.getElementById('refreshStatusBtn').addEventListener('click', checkAccess);
+
+document.getElementById('newIdBtn').addEventListener('click', () => {
+  localStorage.removeItem('ultraUserId');
+  document.getElementById('userIdInput').value = '';
+  document.getElementById('gateError').style.display = 'none';
+  showGateForm();
+});
+
+checkAccess();
+
+async function updateVisitorCounter() {
+  if (!sb) return;
+  const el = document.getElementById('visitorCounter');
+  try {
+    let count = null;
+    const alreadyCounted = localStorage.getItem('ultraVisitCounted');
+    if (!alreadyCounted) {
+      const { data, error } = await sb.rpc('increment_visits');
+      if (!error && typeof data === 'number') {
+        count = data;
+        localStorage.setItem('ultraVisitCounted', '1');
+      }
+    }
+    if (count === null) {
+      const { data } = await sb.from('site_stats').select('visit_count').eq('id', 1).maybeSingle();
+      if (data) count = data.visit_count;
+    }
+    if (count !== null && count !== undefined) {
+      el.textContent = '👥 ' + count.toLocaleString('ru-RU');
+      el.style.display = '';
+    }
+  } catch (e) {}
+}
+updateVisitorCounter();
+</script>
+
+<script>
+const STEP_PERCENTS = [1, 1.5, 3.5, 8, 20, 60];
+let currentDaysCount = 0;
+
+function animateNumber(el, from, to, formatFn, duration) {
+  duration = duration || 450;
+  const start = performance.now();
+  function tick(now) {
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const value = from + (to - from) * eased;
+    el.textContent = formatFn(value);
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+function formatMoney(v) {
+  return v.toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function daysLabel(n) {
+  const mod10 = n % 10, mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return 'день';
+  if ([2,3,4].includes(mod10) && ![12,13,14].includes(mod100)) return 'дня';
+  return 'дней';
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+function renderSteps() {
+  const balance = parseFloat(document.getElementById('balance').value);
+  const list = document.getElementById('stepsList');
+  list.innerHTML = '';
+  const maxPct = STEP_PERCENTS[STEP_PERCENTS.length - 1];
+
+  STEP_PERCENTS.forEach((pct, i) => {
+    const amount = (!isNaN(balance) && balance > 0) ? (balance * pct / 100) : 0;
+    const tier = i < 2 ? 'tier-green' : (i < 4 ? 'tier-orange' : 'tier-purple');
+    const row = document.createElement('div');
+    row.className = 'step-row';
+    const amountId = 'step-amt-' + i;
+    row.innerHTML = `
+      <div class="step-circle ${tier}">${i+1}</div>
+      <div class="step-mid">
+        <div class="step-pct-label"><span>Ступень ${i+1}</span><span>${pct}%</span></div>
+        <div class="step-bar-track"><div class="step-bar-fill ${tier}" style="width:${(pct/maxPct*100).toFixed(1)}%"></div></div>
+      </div>
+      <div class="step-amount ${tier}" id="${amountId}">$0.00</div>
+    `;
+    list.appendChild(row);
+    animateNumber(document.getElementById(amountId), 0, amount, v => '$' + formatMoney(v), 500);
+  });
+}
+
+function loadSavedField(id) {
+  try { return localStorage.getItem('ultraField_' + id) || ''; } catch (e) { return ''; }
+}
+function saveField(id, val) {
+  try { localStorage.setItem('ultraField_' + id, val); } catch (e) {}
+}
+
+function getCheckedDays() {
+  try { const raw = localStorage.getItem('ultraDaysChecked'); return raw ? JSON.parse(raw) : {}; }
+  catch (e) { return {}; }
+}
+function setCheckedDays(obj) {
+  try { localStorage.setItem('ultraDaysChecked', JSON.stringify(obj)); } catch (e) {}
+}
+
+function renderPlanner(resetChecks) {
+  const start = parseFloat(document.getElementById('startBalance').value);
+  const target = parseFloat(document.getElementById('targetBalance').value);
+  const days = parseInt(document.getElementById('daysCount').value);
+
+  const card = document.getElementById('resultCard');
+  const daysTable = document.getElementById('daysTable');
+  const goalProgress = document.getElementById('goalProgress');
+
+  if (isNaN(start) || isNaN(target) || isNaN(days) || start <= 0 || target <= 0 || days <= 0) {
+    card.style.display = 'none';
+    daysTable.style.display = 'none';
+    goalProgress.style.display = 'none';
+    return;
+  }
+
+  daysTable.style.display = '';
+
+  if (resetChecks) setCheckedDays({});
+  currentDaysCount = days;
+
+  if (target <= start) {
+    card.style.display = 'block';
+    document.getElementById('dailyPct').textContent = '0%';
+    document.getElementById('resultSub').textContent = 'Цель уже не выше стартового баланса';
+    daysTable.style.display = 'none';
+    goalProgress.style.display = 'none';
+    return;
+  }
+
+  const dailyRate = Math.pow(target / start, 1 / days) - 1;
+  card.style.display = 'block';
+  animateNumber(document.getElementById('dailyPct'), 0, dailyRate*100, v => v.toFixed(2) + '%', 600);
+  document.getElementById('resultSub').textContent =
+    `${formatMoney(start)} $ -> ${formatMoney(target)} $ за ${days} ${daysLabel(days)}`;
+
+  const daysBody = document.getElementById('daysBody');
+  daysBody.innerHTML = '';
+  const checked = getCheckedDays();
+  let balance = start;
+  for (let d = 1; d <= days; d++) {
+    balance = balance * (1 + dailyRate);
+    const isDone = !!checked[d];
+    const row = document.createElement('div');
+    row.className = 'day-row' + (isDone ? ' done' : '');
+    row.innerHTML = `
+      <span>День ${d}</span>
+      <span class="day-amount">$${formatMoney(balance)}</span>
+      <input type="checkbox" class="day-checkbox" data-day="${d}" ${isDone ? 'checked' : ''}>
+    `;
+    daysBody.appendChild(row);
+  }
+
+  daysBody.querySelectorAll('.day-checkbox').forEach(cb => cb.addEventListener('change', onDayCheck));
+  updateGoalProgress();
+}
+
+function updateGoalProgress() {
+  const goalProgress = document.getElementById('goalProgress');
+  const goalProgressValue = document.getElementById('goalProgressValue');
+  const ring = document.getElementById('progressRingFill');
+  if (!currentDaysCount) { goalProgress.style.display = 'none'; return; }
+  const checked = getCheckedDays();
+  const doneCount = Object.keys(checked).filter(k => checked[k] && parseInt(k) <= currentDaysCount).length;
+  const remaining = currentDaysCount - doneCount;
+  const fraction = doneCount / currentDaysCount;
+  const circumference = 138.2;
+  ring.style.strokeDashoffset = circumference * (1 - fraction);
+  goalProgress.style.display = 'flex';
+  goalProgressValue.textContent = remaining <= 0 ? 'Цель достигнута' : `${remaining} ${daysLabel(remaining)}`;
+}
+
+function onDayCheck(e) {
+  const day = parseInt(e.target.getAttribute('data-day'));
+  const checked = getCheckedDays();
+  checked[day] = e.target.checked;
+  setCheckedDays(checked);
+  e.target.closest('.day-row').classList.toggle('done', e.target.checked);
+  if (e.target.checked) fireConfetti();
+  updateGoalProgress();
+}
+
+function fireConfetti() {
+  const colors = ['#d4a62a', '#f4cf5c', '#34d399', '#f59e0b', '#ffffff'];
+  const count = 34;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    const startX = Math.random() * window.innerWidth;
+    const w = 7 + Math.random()*6;
+    const h = w * (1.4 + Math.random()*0.6);
+    el.style.width = w + 'px';
+    el.style.height = h + 'px';
+    el.style.left = startX + 'px';
+    el.style.top = '-24px';
+    el.style.background = colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(el);
+
+    const duration = 2200 + Math.random()*1400;
+    const delay = Math.random()*350;
+    const fallDistance = window.innerHeight + 60;
+    const sway = 60 + Math.random()*90;
+    const swayDir = Math.random() < 0.5 ? -1 : 1;
+    const spins = 2 + Math.random()*3;
+
+    const keyframes = [];
+    const steps = 10;
+    for (let s = 0; s <= steps; s++) {
+      const p = s/steps;
+      const y = fallDistance * (p*p*(3-2*p));
+      const x = Math.sin(p*Math.PI*2.2) * sway * swayDir * p;
+      const rot = spins*360*p;
+      const opacity = p < 0.85 ? 1 : 1 - (p-0.85)/0.15;
+      keyframes.push({ transform: `translate(${x}px, ${y}px) rotate(${rot}deg)`, opacity });
+    }
+
+    el.animate(keyframes, { duration, delay, easing: 'linear', fill: 'forwards' });
+    setTimeout(() => el.remove(), duration + delay + 80);
+  }
+}
+
+document.getElementById('balance').addEventListener('input', (e) => { saveField('balance', e.target.value); renderSteps(); });
+document.getElementById('startBalance').addEventListener('input', (e) => { saveField('startBalance', e.target.value); renderPlanner(true); });
+document.getElementById('targetBalance').addEventListener('input', (e) => { saveField('targetBalance', e.target.value); renderPlanner(true); });
+document.getElementById('daysCount').addEventListener('input', (e) => { saveField('daysCount', e.target.value); renderPlanner(true); });
+
+['balance', 'startBalance', 'targetBalance', 'daysCount'].forEach(id => {
+  const saved = loadSavedField(id);
+  if (saved) document.getElementById(id).value = saved;
+});
+
+renderSteps();
+renderPlanner(false);
+
+(function() {
+  const SESSION_HOURS = [14, 21];
+  const ACTIVE_WINDOW_SEC = 300;
+
+  function getKyivParts() {
+    const now = new Date();
+    const str = now.toLocaleString('en-US', { timeZone: 'Europe/Kyiv', hour12: false });
+    const d = new Date(str);
+    return { h: d.getHours(), m: d.getMinutes(), s: d.getSeconds() };
+  }
+
+  function pad(n) { return n.toString().padStart(2, '0'); }
+
+  function setRace(idx, progress, state) {
+    const fill = document.getElementById('raceFill' + idx);
+    const status = document.getElementById('raceStatus' + idx);
+    const pct = Math.max(0, Math.min(100, progress * 100));
+    fill.style.width = pct + '%';
+    status.className = 'session-box-status' + (state === 'done' ? ' done' : state === 'active' ? ' active' : '');
+    status.textContent = state === 'done' ? 'Завершена ✓' : state === 'active' ? 'Идёт сейчас' : 'Ожидание';
+  }
+
+  function updateSessionCountdown() {
+    const { h, m, s } = getKyivParts();
+    const nowSec = h * 3600 + m * 60 + s;
+    const s1 = SESSION_HOURS[0] * 3600;
+    const s2 = SESSION_HOURS[1] * 3600;
+
+    const label = document.getElementById('sessionLabel');
+    const cd = document.getElementById('sessionCountdown');
+    const sub = document.getElementById('sessionSub');
+    const card = document.getElementById('sessionCard');
+
+    let activeSession = null;
+    if (nowSec >= s1 && nowSec - s1 < ACTIVE_WINDOW_SEC) activeSession = 1;
+    if (nowSec >= s2 && nowSec - s2 < ACTIVE_WINDOW_SEC) activeSession = 2;
+
+    if (nowSec < s1) {
+      setRace(1, nowSec / s1, activeSession === 1 ? 'active' : 'pending');
+      setRace(2, 0, 'pending');
+    } else if (nowSec < s2) {
+      setRace(1, 1, 'done');
+      setRace(2, (nowSec - s1) / (s2 - s1), activeSession === 2 ? 'active' : 'pending');
+    } else {
+      setRace(1, 1, 'done');
+      setRace(2, 1, activeSession === 2 ? 'active' : 'done');
+    }
+
+    if (activeSession) {
+      label.textContent = `Сессия ${activeSession} началась`;
+      label.style.color = 'var(--green)';
+      cd.textContent = activeSession === 1 ? '14:00' : '21:00';
+      sub.textContent = 'Присоединяйтесь прямо сейчас';
+      card.style.animation = 'pulseGlow 1s infinite';
+      card.style.borderColor = 'var(--green)';
+      return;
+    }
+
+    let target = [s1, s2].find(t => t > nowSec);
+    if (target === undefined) target = s1 + 24 * 3600;
+    const remaining = target - nowSec;
+    const hh = Math.floor(remaining / 3600);
+    const mm = Math.floor((remaining % 3600) / 60);
+    const ss = remaining % 60;
+
+    label.textContent = 'Следующая сессия';
+    label.style.color = '';
+    cd.textContent = `${pad(hh)}:${pad(mm)}:${pad(ss)}`;
+    const startHour = (target % (24 * 3600)) / 3600;
+    sub.textContent = `Старт в ${pad(startHour)}:00`;
+    card.style.animation = '';
+    card.style.borderColor = '';
+  }
+
+  updateSessionCountdown();
+  setInterval(updateSessionCountdown, 1000);
+
+  function loadTracker() {
+    try { return JSON.parse(localStorage.getItem('ultraTracker') || '{"wins":0,"losses":0}'); }
+    catch (e) { return { wins: 0, losses: 0 }; }
+  }
+  function saveTracker(t) {
+    try { localStorage.setItem('ultraTracker', JSON.stringify(t)); } catch (e) {}
+  }
+  function renderTracker() {
+    const t = loadTracker();
+    document.getElementById('winsCount').textContent = t.wins;
+    document.getElementById('lossesCount').textContent = t.losses;
+    const total = t.wins + t.losses;
+    const rate = total > 0 ? ((t.wins / total) * 100).toFixed(0) : 0;
+    document.getElementById('winRateText').textContent = total > 0 ? `Winrate: ${rate}% (${total} сделок)` : 'Пока нет сделок';
+  }
+  document.getElementById('winBtn').addEventListener('click', () => {
+    const t = loadTracker(); t.wins++; saveTracker(t); renderTracker(); fireConfetti();
+  });
+  document.getElementById('lossBtn').addEventListener('click', () => {
+    const t = loadTracker(); t.losses++; saveTracker(t); renderTracker();
+    const flash = document.getElementById('globalFlash');
+    flash.classList.remove('flash-active');
+    void flash.offsetWidth;
+    flash.classList.add('flash-active');
+    setTimeout(() => flash.classList.remove('flash-active'), 1900);
+  });
+  document.getElementById('resetTrackerBtn').addEventListener('click', () => {
+    saveTracker({ wins: 0, losses: 0 }); renderTracker();
+  });
+  renderTracker();
+
+  let coinRotation = 0;
+  let coinFlipping = false;
+  document.getElementById('flipCoinBtn').addEventListener('click', () => {
+    if (coinFlipping) return;
+    coinFlipping = true;
+    const result = Math.random() < 0.5 ? 'heads' : 'tails';
+    const extraSpins = 4 + Math.floor(Math.random() * 3);
+    const targetDeg = result === 'heads' ? 0 : 180;
+    const currentMod = ((coinRotation % 360) + 360) % 360;
+    coinRotation += extraSpins * 360 + ((targetDeg - currentMod + 360) % 360);
+    document.getElementById('coin').style.transform = `rotateY(${coinRotation}deg)`;
+    document.getElementById('coinResult').textContent = 'Подбрасываем…';
+    setTimeout(() => {
+      document.getElementById('coinResult').textContent = result === 'heads' ? 'Выпал орёл 🪙' : 'Выпала решка 🪙';
+      coinFlipping = false;
+    }, 1500);
+  });
+
+  const canvas = document.getElementById('bgfx');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const bills = [];
+  const types = ['bill','bill','coin','coin','candle','watch'];
+  for (let i = 0; i < 22; i++) {
+    bills.push({
+      type: types[Math.floor(Math.random()*types.length)],
+      x: Math.random(), y: Math.random(),
+      speed: 0.00012 + Math.random()*0.00018,
+      drift: (Math.random()-0.5)*0.0003,
+      size: 28 + Math.random()*26,
+      rot: Math.random()*Math.PI*2,
+      rotSpeed: (Math.random()-0.5)*0.01
+    });
+  }
+
+  function drawBill(b, x, y) {
+    ctx.strokeStyle = '#d4a62a';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(-b.size*0.6, -b.size*0.4, b.size*1.2, b.size*0.8);
+    ctx.font = (b.size*0.5)+'px sans-serif';
+    ctx.fillStyle = '#d4a62a';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('$', 0, 0);
+  }
+
+  function drawCoin(b) {
+    const r = b.size*0.42;
+    ctx.strokeStyle = '#f4cf5c';
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 0, r*0.7, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.font = (r*0.9)+'px sans-serif';
+    ctx.fillStyle = '#f4cf5c';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('$', 0, 1);
+  }
+
+  function drawCandle(b) {
+    const w = b.size*0.34;
+    const h = b.size*0.8;
+    ctx.strokeStyle = '#d4a62a';
+    ctx.lineWidth = 1.6;
+    ctx.beginPath();
+    ctx.moveTo(0, -h*0.6); ctx.lineTo(0, h*0.6);
+    ctx.stroke();
+    ctx.strokeRect(-w/2, -h*0.28, w, h*0.5);
+  }
+
+  function drawWatch(b) {
+    const r = b.size*0.4;
+    ctx.strokeStyle = '#f4cf5c';
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI*2);
+    ctx.stroke();
+    ctx.fillStyle = '#f4cf5c';
+    ctx.fillRect(-r*0.35, -r*1.55, r*0.7, r*0.6);
+    ctx.fillRect(-r*0.35, r*0.95, r*0.7, r*0.6);
+    ctx.beginPath();
+    ctx.moveTo(0,0); ctx.lineTo(0, -r*0.55);
+    ctx.moveTo(0,0); ctx.lineTo(r*0.4, r*0.1);
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+  }
+
+  function drawParticle(b) {
+    const x = b.x*W, y = b.y*H;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(b.rot);
+    if (b.type === 'bill') drawBill(b, x, y);
+    else if (b.type === 'coin') drawCoin(b);
+    else if (b.type === 'candle') drawCandle(b);
+    else if (b.type === 'watch') drawWatch(b);
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0,0,W,H);
+    bills.forEach(b => {
+      b.y += b.speed; b.x += b.drift; b.rot += b.rotSpeed;
+      if (b.y > 1.1) { b.y = -0.1; b.x = Math.random(); }
+      drawParticle(b);
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
+
+
+</body></html>
