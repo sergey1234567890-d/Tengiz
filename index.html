@@ -6,7 +6,7 @@
      like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=a7f13eb9-98f9-4015-821e-5af0aaecbd72
      Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>mega trader</title>
+<title class="md43">mega trader</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 <link href="./ULTRA TRADING — Распределение баланса_files/css2" rel="stylesheet">
@@ -14,24 +14,28 @@
   :root {
     --bg: #09090d;
     --surface: #121218;
-    --surface-2: #17171f;
+    --surface-2: #000000;
     --border: #232330;
     --border-soft: #1b1b24;
     --text: #f5f5f7;
-    --text-secondary: #9a99a8;
+    --text-secondary: #ffffff;
     --text-muted: #5e5d6b;
-    --accent: #d4a62a;
+    --accent: #013220;
     --accent-2: #f4cf5c;
     --accent-bg: #2a2210;
     --green: #34d399;
     --orange: #f59e0b;
     --red: #f87171;
   }
+ 
 
   * { box-sizing: border-box; }
   html, body {
     margin: 0; padding: 0;
-    background: var(--bg);
+    background-image: url("img/tes.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     color: var(--text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     padding-top: env(safe-area-inset-top, 0px);
@@ -77,7 +81,8 @@
     box-shadow: 0 0 22px 2px rgba(212,166,42,0.45);
   }
   .logo-text {
-    font-size: 14px;
+    font-size: 25px;
+    color: #095221;
     font-weight: 700;
     letter-spacing: 0.04em;
   }
@@ -103,13 +108,14 @@
 
   h1 {
     font-size: 26px;
+    color: #000000;
     font-weight: 800;
     margin: 0 0 6px;
     letter-spacing: -0.02em;
   }
   .subtitle {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: #000000;
     margin: 0 0 28px;
   }
 
@@ -135,8 +141,8 @@
     user-select: none;
   }
   .tab.active {
-    background: var(--accent);
-    color: #0b0710;
+    background: #095221;
+    color: #FFFFFF;
   }
 
   .panel { display: none; }
@@ -204,7 +210,7 @@
   .step-mid { min-width: 0; }
   .step-pct-label {
     font-size: 12px;
-    color: var(--text-muted);
+    color: #FFFFFF;
     margin-bottom: 5px;
     display: flex;
     justify-content: space-between;
@@ -218,7 +224,7 @@
   .step-bar-fill {
     height: 100%;
     border-radius: 100px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    background: red;
     transition: width 0.4s cubic-bezier(.2,.8,.2,1);
   }
   .step-circle.tier-green { background: rgba(52,211,153,0.14); color: var(--green); }
@@ -226,7 +232,7 @@
   .step-circle.tier-purple { background: var(--accent-bg); color: var(--accent-2); }
   .step-bar-fill.tier-green { background: linear-gradient(90deg, #1fa776, var(--green)); }
   .step-bar-fill.tier-orange { background: linear-gradient(90deg, #c2760a, var(--orange)); }
-  .step-bar-fill.tier-purple { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+  .step-bar-fill.tier-purple { background: red;}
   .step-amount.tier-green { color: var(--green); }
   .step-amount.tier-orange { color: var(--orange); }
   .step-amount.tier-purple { color: var(--accent-2); }
@@ -487,11 +493,10 @@ alert("hi tengiz");
 <div class="wrap" id="mainContent" style="">
   <div class="topbar">
     <div class="logo">
-      <div class="logo-mark">U</div>
-      <div class="logo-text">ULTRA TRADING</div>
-      <span class="visitor-counter" id="visitorCounter" style="">👥 277</span>
+      <div class="logo-text">MEGA TRADER</div>
+      
     </div>
-    <div class="badge-live">● ULTRA VIP</div>
+    
   </div>
 
   <h1>Управление балансом</h1>
@@ -500,8 +505,7 @@ alert("hi tengiz");
   <div class="tabs">
     <div class="tab active" data-tab="steps">Ступени</div>
     <div class="tab" data-tab="planner">Планировщик</div>
-    <div class="tab" data-tab="tracker">Трекер</div>
-  </div>
+ </div>
 
   <div class="panel active" id="panel-steps">
     <div class="card">
